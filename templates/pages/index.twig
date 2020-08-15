@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% include 'blocks/header/page-header.twig' %}
+
+	{% for post in posts %}
+		<div id="power-reviews-data"></div>
+		{% include "blocks/posts/content.twig" with {post: post}  %}
+
+	{% endfor %}
+
+{% endblock %}
+
+{% block sidebar %}
+
+	{% include "blocks/sidebar.twig" %}
+
+{% endblock %}

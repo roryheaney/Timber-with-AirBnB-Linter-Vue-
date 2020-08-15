@@ -1,0 +1,40 @@
+{% if menu %}
+
+	<ul class="navbar-nav mr-auto" role="list">
+		{% for item in menu %}
+			{% set children = item.children %}
+			<li
+				class="nav-item {{ item.classes | join(' ') }} {% if children %} dropdown{% endif %}"
+				{% if children %}
+					id="navbarDropdown-{{item.id}}"
+					role="button"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				{% endif %}
+				role="listitem"
+			>
+				<a href="{{ item.link }}">
+					<span>
+						{{ item.title }}
+					</span>
+				</a>
+				{% if children %}
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown-{{item.id}}">
+						<ul class="" role="list">
+							{% for link in children %}
+								<li role="listitem">
+									<a href="{{link.link}}">
+										{{link.title}}
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endif %}
+

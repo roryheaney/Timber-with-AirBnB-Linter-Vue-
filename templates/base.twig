@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html {{ function('language_attributes') }}>
+
+    {% include 'blocks/head.twig' %}
+
+    <body {{ function('body_class') }} data-rest="{{ function('get_rest_url') }}" data-url="{{ function('get_site_url') }}">
+
+        {% include 'blocks/header/header.twig' %}
+
+        <main class="main {% block main_class %}{% endblock %}">
+            {% block content %}{% endblock %}
+        </main>
+
+        {# 
+            {% include 'blocks/sidebar.twig' %} 
+        #}
+
+        {% block footer %}
+
+            {% include 'blocks/footer.twig' %}
+            {{ function('wp_footer') }}
+            
+        {% endblock %}
+
+    </body>
+
+</html>
